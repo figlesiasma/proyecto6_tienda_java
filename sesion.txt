@@ -1,0 +1,13 @@
+*crear sesión
+Httpsession sesion = request.getSession();
+sesion.setAttribute("usuario",usuario);
+response.sendRedirect("pagina.jsp");
+
+*recuperar sesión
+<% 	Httpsession sesion = request.getSession();
+	String usuario = (String)sesion.getAttribute("usuario");
+
+%>
+
+*cerrar sesión
+<% sesion.invalidate();

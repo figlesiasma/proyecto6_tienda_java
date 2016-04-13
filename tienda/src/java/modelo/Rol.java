@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clases;
+package modelo;
 
 /**
  *
@@ -14,7 +14,6 @@ public class Rol {
     private String rol;
     
     /*GETERS Y SETTERS*/
-
     public int getId() {
         return id;
     }

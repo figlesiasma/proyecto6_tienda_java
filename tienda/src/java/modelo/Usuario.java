@@ -3,18 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clases;
+package modelo;
+
 /**
  *
  * @author felip
  */
-public class Administrador extends Persona{
+public class Usuario {
     private int id;
     private String dni;
     private String password;
     private int rol;
+    private String nombre;
+    private String email;
+    private int activo;
 
     /*GETTERS & SETTERS*/
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getDni() {
         return dni;
     }
@@ -38,6 +50,29 @@ public class Administrador extends Persona{
     public void setRol(int rol) {
         this.rol = rol;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     
-   
+    public int getActivo() {
+        return activo;
+    }
+
+    public void setActivo(int activo) {
+        this.activo = activo;
+    }
+    
 }
