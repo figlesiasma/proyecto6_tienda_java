@@ -13,7 +13,6 @@ public class Usuario {
     private int id;
     private String dni;
     private String password;
-    private int rol;
     private String nombre;
     private String email;
     private int activo;
@@ -43,14 +42,6 @@ public class Usuario {
         this.password = password;
     }
 
-    public int getRol() {
-        return rol;
-    }
-
-    public void setRol(int rol) {
-        this.rol = rol;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -74,5 +65,6 @@ public class Usuario {
     public void setActivo(int activo) {
         this.activo = activo;
     }
+   
     
 }

@@ -32,7 +32,6 @@ public class Operaciones {
                 user.setId(rs.getInt("usu_id"));
                 user.setDni(rs.getString("usu_dni"));
                 user.setPassword(rs.getString("usu_password"));
-                user.setRol(rs.getInt("usu_id"));
                 user.setNombre(rs.getString("usu_nombre"));
                 user.setEmail(rs.getString("usu_email"));
                 lista.add(user);
@@ -42,17 +41,16 @@ public class Operaciones {
         }
     }
     
-    
-    
+     
     public boolean insertar (Usuario user){
-        sql = "INSERT INTO `usuario`(`usu_dni`, `usu_password`, `rol_id`, `usu_nombre`, `usu_email`) VALUES (?,?,?,?,?)";
+        sql = "INSERT INTO `usuario`(`usu_dni`, `usu_password`, `usu_nombre`, `usu_email`, `usu_activo`) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, user.getDni());
             pst.setString(2, user.getPassword());
-            pst.setInt(3, user.getRol());
-            pst.setString(4, user.getNombre());
-            pst.setString(5, user.getEmail());
+            pst.setString(3, user.getNombre());
+            pst.setString(4, user.getEmail());
+            pst.setInt(5, user.getActivo());
             
             int n = pst.executeUpdate();
             if (n != 0){
@@ -66,14 +64,13 @@ public class Operaciones {
     }
     
     public boolean editar (Usuario user){
-        sql = "UPDATE `usuario` SET `usu_dni`=?,`usu_password`=?,`rol_id`=?,`usu_nombre`=?,`usu_email`=? WHERE id=?";
+        sql = "UPDATE `usuario` SET `usu_dni`=?,`usu_password`=?,`usu_nombre`=?,`usu_email`=? WHERE id=?";
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, user.getDni());
             pst.setString(2, user.getPassword());
-            pst.setInt(3, user.getRol());
-            pst.setString(4, user.getNombre());
-            pst.setString(5, user.getEmail());
+            pst.setString(3, user.getNombre());
+            pst.setString(4, user.getEmail());
             pst.setInt(6, user.getId());
             
             int n = pst.executeUpdate();
@@ -127,12 +124,15 @@ public class Operaciones {
             ps.setString(1, user);
             ps.setString(2, pass);
 
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();         
             estado = rs.next();
-
+            
         } catch (Exception e) {
             System.out.println(e);
         }
         return estado;
     }
+    
+   
+    
 }

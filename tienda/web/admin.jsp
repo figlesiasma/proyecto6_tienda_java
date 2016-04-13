@@ -9,7 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Administración</title>
     </head>
     <body>
         <h1>Admin</h1>

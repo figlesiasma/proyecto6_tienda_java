@@ -38,11 +38,9 @@ public class Login extends HttpServlet {
         
       
         if (op.validar(user, pass)) {
-           // HttpSession sesion = request.getSession(true);
-
-            //sesion.setAttribute("usuario",user);
+            HttpSession sesion = request.getSession();
+            sesion.setAttribute("usuario", user);
             response.sendRedirect("main.jsp");
-            //response.sendRedirect("admin.jsp");
         } else {
             response.sendRedirect("index.jsp");
         }
