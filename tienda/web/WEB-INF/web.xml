@@ -4,9 +4,41 @@
         <servlet-name>Insertar</servlet-name>
         <servlet-class>servlet.Insertar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginAdmin</servlet-name>
+        <servlet-class>servlet.LoginAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertarAdmin</servlet-name>
+        <servlet-class>servlet.InsertarAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MostrarUsuarios</servlet-name>
+        <servlet-class>servlet.MostrarUsuarios</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActivarDesactivarUsuario</servlet-name>
+        <servlet-class>servlet.ActivarDesactivarUsuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Insertar</servlet-name>
         <url-pattern>/Insertar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginAdmin</servlet-name>
+        <url-pattern>/LoginAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertarAdmin</servlet-name>
+        <url-pattern>/InsertarAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MostrarUsuarios</servlet-name>
+        <url-pattern>/MostrarUsuarios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActivarDesactivarUsuario</servlet-name>
+        <url-pattern>/ActivarDesactivarUsuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import modelo.Administrador;
 
 /**
  *
@@ -34,8 +35,10 @@ public class Operaciones {
                 user.setPassword(rs.getString("usu_password"));
                 user.setNombre(rs.getString("usu_nombre"));
                 user.setEmail(rs.getString("usu_email"));
+                user.setActivo(rs.getInt("usu_activo"));
                 lista.add(user);
             }
+            
         }catch(Exception e){
             
         }
@@ -43,7 +46,9 @@ public class Operaciones {
     
      
     public boolean insertar (Usuario user){
-        sql = "INSERT INTO `usuario`(`usu_dni`, `usu_password`, `usu_nombre`, `usu_email`, `usu_activo`) VALUES (?,?,?,?,?)";
+        
+        sql = "INSERT INTO `usuario`(`usu_dni`, `usu_password`, `usu_nombre`, `usu_email`, `usu_activo`) VALUES (?,?,?,?,?)"; 
+        
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, user.getDni());
@@ -51,6 +56,29 @@ public class Operaciones {
             pst.setString(3, user.getNombre());
             pst.setString(4, user.getEmail());
             pst.setInt(5, user.getActivo());
+            
+            int n = pst.executeUpdate();
+            if (n != 0){
+                return true;
+            }else{
+                return false;
+            }
+        }catch(Exception e){
+            return false;
+        }
+    }
+    
+    public boolean insertarAdm (Administrador user){
+        sql = "INSERT INTO `administrador`(`adm_nombre`, `adm_dni`, `adm_password`, `rol_id`, `adm_email`, `adm_activo`) VALUES (?,?,?,?,?,?)";
+           
+        try {
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.setString(1, user.getNombre());
+            pst.setString(2, user.getDni());
+            pst.setString(3, user.getPassword());
+            pst.setInt(4, user.getRol_id());
+            pst.setString(5, user.getEmail());
+            pst.setInt(6, user.getActivo());
             
             int n = pst.executeUpdate();
             if (n != 0){
@@ -83,8 +111,13 @@ public class Operaciones {
             return false;
         }
     }
-    public boolean desactivar (Usuario user){
-        sql = "UPDATE `usuario` SET `usu_activo`=0 WHERE id=?";
+    
+    public boolean activarDesactivarUsuario (Usuario user){
+        if (user.getActivo()==1) {
+            sql = "UPDATE `usuario` SET `usu_activo`=0 WHERE id=?";
+        }else{
+            sql = "UPDATE `usuario` SET `usu_activo`=1 WHERE id=?";
+        } 
         try {
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setInt(1, user.getId());    
@@ -99,32 +132,20 @@ public class Operaciones {
         }
     }
     
-    public boolean activar (Usuario user){
-        sql = "UPDATE `usuario` SET `usu_activo`=1 WHERE id=?";
-        try {
-            PreparedStatement pst = cn.prepareStatement(sql);
-            pst.setInt(1, user.getId());    
-            int n = pst.executeUpdate();
-            if (n != 0){
-                return true;
-            }else{
-                return false;
-            }
-        }catch(Exception e){
-            return false;
-        }
-    }
-    
-    public boolean validar(String user, String pass) {
+    public boolean validar(String user, String pass, boolean nivel) {
         boolean estado = false;
         try {
-            sql="select * from usuario where usu_dni=? and usu_password=?";
+            if(nivel){
+                sql="select * from administrador where adm_dni=? and adm_password=?"; 
+            }else{
+                sql="select * from usuario where usu_dni=? and usu_password=?"; 
+            }
 
             PreparedStatement ps = cn.prepareStatement(sql);
             ps.setString(1, user);
             ps.setString(2, pass);
 
-            ResultSet rs = ps.executeQuery();         
+            ResultSet rs = ps.executeQuery();   
             estado = rs.next();
             
         } catch (Exception e) {
@@ -133,6 +154,12 @@ public class Operaciones {
         return estado;
     }
     
+    public boolean comprobarActivo(int valorActivo){
+        if(valorActivo==0){
+            return false;
+        }
+        return true;
+    }
    
-    
+  
 }

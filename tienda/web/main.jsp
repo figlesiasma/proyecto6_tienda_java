@@ -23,9 +23,10 @@
         <main>
             <section>
                 <%  HttpSession sesion = request.getSession();
-                    String usuario = (String) sesion.getAttribute("usuario");
+                    String usuario = (String)sesion.getAttribute("usuario");
                     out.println("Bienvenido " + usuario);
                 %>
+            </section>
         </main><br/>
         <footer class="w3-container w3-teal">
             <h5>Felipe Iglesias 2016</h5>

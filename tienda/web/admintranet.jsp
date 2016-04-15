@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <title>Index</title>
+        <title>Intranet</title>
     </head>
     <body>
         <header class="w3-container w3-red">
@@ -22,15 +22,14 @@
             
         </nav>
         <main>
-            <section>
-                <p>ADMINISTRACIÓN</p>
-                <form action="LoginAdmin" method="POST">
-                        <input type="text" name="user" id="userAdmin" placeholder="Dni" required><br>
-                        <input type="password" name="pass" id="passAdmin" placeholder="Contraseña" required><br>
-                    <input type="submit" value="Entrar">
-                </form>
-            </section><br>
-            
+             <section>
+                <%  HttpSession sesion = request.getSession();
+                    String usuario = (String) sesion.getAttribute("administrador");
+                    out.println("Hola administrador " + usuario);
+                    %><br><br>
+                <a href="admregistrar.jsp"><button>Añadir Administrador</button></a>
+                <a href="admclientes.jsp"><button>Mostrar Clientes</button></a>
+            </section>          
         </main><br/>
         <footer class="w3-container w3-red">
             <h5>Felipe Iglesias 2016</h5>

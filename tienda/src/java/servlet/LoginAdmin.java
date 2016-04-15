@@ -10,15 +10,13 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import modelo.Administrador;
 import operacion.ConexionBD;
 import operacion.Operaciones;
 
@@ -26,8 +24,8 @@ import operacion.Operaciones;
  *
  * @author Felipe Iglesias
  */
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
+@WebServlet(name = "LoginAdmin", urlPatterns = {"/LoginAdmin"})
+public class LoginAdmin extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
@@ -35,15 +33,15 @@ public class Login extends HttpServlet {
         String pass = request.getParameter("pass").trim();
 
         Operaciones op = new Operaciones();
-        
-        boolean nivel = false;
       
-        if (op.validar(user, pass,nivel)) {
+        boolean nivel = true;
+      
+        if (op.validar(user, pass, nivel)) {
             HttpSession sesion = request.getSession();
-            sesion.setAttribute("usuario", user);
-            response.sendRedirect("main.jsp");
+            sesion.setAttribute("administrador", user);
+            response.sendRedirect("admintranet.jsp");
         } else {
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("admin.jsp");
         }
         
         

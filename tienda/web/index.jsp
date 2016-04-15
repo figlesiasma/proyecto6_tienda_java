@@ -19,7 +19,7 @@
             <h1>EL JARDÍN DE PIPE</h1>
         </header><br/>
         <nav class="w3-container w3-teal">
-            
+            <a href="admin.jsp" style="float: right;">Acceso Administradores</a>
         </nav>
         <main>
             <section>
@@ -30,7 +30,7 @@
                     <input type="submit" value="Entrar">
                 </form>
             </section><br>
-            <a href="registrar.jsp">Regístrate</a>
+            <a href="registrar.jsp">Regístrate</a><br>
             
         </main><br/>
         <footer class="w3-container w3-teal">

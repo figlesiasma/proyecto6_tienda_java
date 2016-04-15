@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelo.Usuario;
 import operacion.ConexionBD;
 import operacion.Operaciones;
@@ -30,13 +31,15 @@ public class Insertar extends HttpServlet {
         Usuario user = new Usuario();
         
         user.setNombre(request.getParameter("usu_nombre").trim().toLowerCase());
-        user.setDni(request.getParameter("usu_dni").trim().toLowerCase());
+        user.setDni(request.getParameter("usu_dni").trim().toUpperCase());
         user.setEmail(request.getParameter("usu_email").trim().toLowerCase());
         user.setPassword(request.getParameter("usu_password").trim());
         user.setActivo(1);
         
         if (op.insertar(user)){
-            response.sendRedirect("index.jsp");
+            HttpSession sesion = request.getSession();
+            sesion.setAttribute("usuario", user.getNombre());
+            response.sendRedirect("main.jsp");
         }else{
             response.sendRedirect("registrar.jsp");
         }

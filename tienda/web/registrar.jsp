@@ -30,7 +30,7 @@
                     <input type="text" name="usu_email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Formato: felipe_iglesias@hotmail.com" required><br>
                     <input type="password" name="usu_password" id="password" placeholder="Password" required><br>
                     <input type="password" name="usu_password2" id="password" placeholder="Repite password" required><br>
-                    <input type="submit" value="Entrar">
+                    <input type="submit" value="Registrar">
                 </form>
                 <a href="index.jsp"><button>Volver</button></a>
             </section>
