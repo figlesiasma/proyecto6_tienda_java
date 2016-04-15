@@ -1,16 +1,31 @@
 # proyecto6_tienda_java
 Proyecto 6 - Tienda virtual en JAVA
 
+GitHub = https://github.com/figlesiasma/proyecto6_tienda_java.git
+
 Creado por: Felipe Iglesias Macarro
 Fecha: 11/04/2016
 
+14/04/2016
+----------
+- Sistema de Visualizaci贸n
+
+13/04/2016
+----------
+- Sistema de Registro
+
+12/04/2016
+----------
+- Sistema de Login
+
+
 11/04/2016
 ----------
-- An醠isis de la base de datos
-- Creaci髇 de tablas en MySQL
-- Relaci髇 de tablas en MySQL
-- Creaci髇 de proyecto App WEB JAVA
-- Creaci髇 de clases en JAVA:
+- An谩lisis de la base de datos
+- Creaci贸n de tablas en MySQL
+- Relaci贸n de tablas en MySQL
+- Creaci贸n de proyecto App WEB JAVA
+- Creaci贸n de clases en JAVA:
 	* PERSONA
 	* ADMINISTRADOR
 	* CLIENTE
